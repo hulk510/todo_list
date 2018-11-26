@@ -1,0 +1,9 @@
+<p>新しいToDoリストを作成する</p>
+<%= render 'form_list' %>
+<ol>
+	<% @lists.each do |l| %>
+		<li>
+			<%= link_to l.title, list_path(l.id) %>
+		</li>
+	<% end %>
+</ol>
