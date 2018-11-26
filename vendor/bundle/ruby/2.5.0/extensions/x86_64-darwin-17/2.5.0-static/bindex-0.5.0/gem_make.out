@@ -1,0 +1,15 @@
+current directory: /Users/gotouharuka/Ruby/todo_list/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+/Users/gotouharuka/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181126-33592-1uzvhwf.rb extconf.rb
+creating Makefile
+
+current directory: /Users/gotouharuka/Ruby/todo_list/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /Users/gotouharuka/Ruby/todo_list/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+current directory: /Users/gotouharuka/Ruby/todo_list/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20181126-33592-d4gpci/bindex
