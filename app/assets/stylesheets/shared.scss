@@ -1,2 +1,104 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+	padding-top: 65px;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+header {
+  height: 60px;
+  width: 100%;
+  background-color: rgba(30,72,79,0.9);
+	position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.header-left {
+  float: left;
+  a {
+	  line-height: 60px;
+	  padding-right: 25px;
+	  padding-left: 25px;
+	  color: white;
+	  opacity: 0.8;
+	  display: block;
+  }
+}
+.header-left a:hover {
+	color: white;
+	opacity: 1;
+	text-decoration: none;
+}
+.header-right {
+  float: right;
+  transition: all 0.5s;
+  a {
+  	color: white;
+	  opacity: 0.8;
+	  line-height: 60px;
+	  padding-right: 25px;
+	  padding-left: 25px;
+	  color: white;
+	  display: block;
+  }
+}
+
+.header-right:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  a {
+		text-decoration: none;
+		color: white;
+		opacity: 1;
+  }
+}
+
+.alert-success {
+	margin-left: 10px;
+	position: fixed;
+  bottom: 0;
+  z-index: 10;
+  ul {
+  	padding-left: 10px;
+  	padding-right: 30px;
+  	line-height: 45px
+  }
+  a {
+		margin-left: 5px;
+  	display: block;
+  	line-height: 45px
+  }
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+
+.list {
+	padding-right: 40px;
+}
+
+.search_info {
+  color: red;
+}

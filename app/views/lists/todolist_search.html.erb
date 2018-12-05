@@ -1,0 +1,52 @@
+
+<input type="text" id="search_field" class="form-control" >
+<input type="submit" name="button1" value="検索" id="search" class="form-control" >
+
+<ul id="result" class="list">
+</ul>
+
+<script>
+$(document).on('turbolinks:load', function(){
+  $(document).on('click', '#search', function(e){ 
+    e.preventDefault(); 
+	  var input = $.trim($('#search_field').val());
+	  $.ajax({ 
+	     url: './search', 
+	     type: 'GET', 
+	     data: {keyword:input},
+	     dataType: 'json'
+	  })
+    .done(function(data){ 
+      $('#result').find('li').remove();
+      var list = data[0]
+      var task = data[1]
+      if((list.length === 0) && (task.length === 0)){
+				$('#result').append('<li class="search_info">' + '対象のToDoは見つかりません' + '</li>')
+				$('#result').append('<li class="search_info">' + '対象のToDoリストは見つかりません' + '</li>')
+			} else if((list.length > 0) || (task.length > 0)) {
+				$('#result').append('<li class="search_info">' + 'ToDoが' + task.length + '件ありました' + '</li>')
+				for(var i=0; i < task.length; i++){
+					$('#result').append(
+						'<li class="tasks">'
+						+ '<a href="#">' + task[i].title + '</a>'
+						+ '<p>' + task[i].deadline + '</p>' 
+					  + '<p>' + task[i].id + '</p>'
+					  + '<p class="create_time">' + task[i].created_at +'</p>'
+						+ '</li>'
+					)
+	      }
+
+				$('#result').append('<li class="search_info">' + 'ToDoリストが' + list.length + '件ありました' + '</li>')
+	      for(var j=0; j < list.length; j++){
+					$('#result').append(
+						'<li class="lists">'
+						+ '<a href="#">' + list[j].title +'</a>'
+						+	'<p class="create_time">' + list[j].created_at +'</p>'
+						+ '</li>'	
+					)
+	      }
+			} 
+    })
+  });
+});
+</script>

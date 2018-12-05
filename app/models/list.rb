@@ -1,3 +1,4 @@
 class List < ApplicationRecord
-	validates :title, presence: { messsage: "入力してください" }, uniqueness: true, length: { maximum: 31 }
+	has_many :tasks, dependent: :destroy
+	validates :title, presence: true, uniqueness: true, length: { maximum: 31 }
 end

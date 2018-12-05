@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   def index
   	@list = List.new 
-  	@lists = List.all 
+  	@lists = List.all
   end
 
   def new 
@@ -28,7 +28,16 @@ class ListsController < ApplicationController
   def update
   end
 
+
   def destroy
+  end
+
+  def todolist_search
+  end
+
+  def search
+    @lists = List.where('title LIKE(?)', "%#{params[:keyword]}%"), Task.where('title LIKE(?)', "%#{params[:keyword]}%")
+    render json:  @lists
   end
 
   private

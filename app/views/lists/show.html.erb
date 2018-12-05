@@ -1,1 +1,53 @@
-<h1><%= @list.title %></h1>
+<h1 id="list_title"><%= @list.title %></h1>
+
+<div id="new_task_form"></div>
+
+
+
+<ul class="list">
+	<% if @list.tasks.any? %>
+	  <% @list.tasks.each do |task| %>
+      <li class="tasks">
+      	<p><%= task.title %></p>
+      	<p>期限：　<%= task.deadline.to_s(:time_format) %></p>
+      	<p>作成日：<%= task.created_at.to_s(:time_format) %></p>
+      	<label class="checkbox">
+          <%= check_box_tag 'name&id_name', 'value', task.done, {'data-id' => task.id, 'data-list_id' => task.list_id}  %>    
+        </label>
+        <%= link_to "削除", list_task_path(task.list_id, task.id), method: :delete, data: { confirm: "削除しますか？" } %>
+      </li>
+	  <% end %>
+	<% else %>
+	  <p>登録されているToDoはありません</p>
+	<% end %>
+</ul>
+
+<div id="task_form">
+ 	<p>新しいToDoを作成する</p>
+	<%= form_for [@list, @list.tasks.build] do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+			<span>ToDo名</span>
+	    <%= f.text_field :title, class: 'form-control' %>
+			<span>期限</span>
+	    <%= f.date_select :deadline, class: 'form-control' %>
+	    <%= f.submit "ToDoの追加", class: 'btn btn-primary' %>
+	<% end %>
+</div>
+
+<script>
+  $(function(){
+    $('input[type=checkbox]').click(function(){
+      var idList = $(this).data('list_id'),
+          idTask = $(this).data('id');
+      $.post('/lists/' + idList + '/tasks/' + idTask + '/toggle');
+    });
+  });
+
+	// @list.eachでbuildを上にすると空のインスタンスができてしまう。
+  var form = document.getElementById('task_form')
+  var nf = document.getElementById('new_task_form')
+  nf.appendChild(form)
+</script>
+
+
+	
