@@ -26,7 +26,10 @@ $(document).on('turbolinks:load', function(){
       console.log(data)
       var list = data[0]
       var task = data[1]
-
+			// function resultId(e){
+			// 	var s = e.currentTarget()
+			// 	var i = 
+			// }
       if((list.length === 0) && (task.length === 0)){
 				$('#result').append('<li class="search_info">' + '対象のToDoは見つかりません' + '</li>')
 				$('#result').append('<li class="search_info">' + '対象のToDoリストは見つかりません' + '</li>')
@@ -39,7 +42,6 @@ $(document).on('turbolinks:load', function(){
 						+ '<a href="../lists/' + task[i].list_id + '">' + task[i].title + '</a>'
 						+ '<p>' + '期限：　' + createTime(task[i].deadline) + '</p>' 
 					  + '<p class="create_time">' + '作成日：' + createTime(task[i].created_at) +'</p>'
-					  + '<p>' + 'リスト：' + task[i].list_id + '</p>'
 						+ '</li>'
 					)
 	      }

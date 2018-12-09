@@ -2,7 +2,6 @@ class ListsController < ApplicationController
   def index
   	@list = List.new 
   	@lists = List.includes(:tasks).order("tasks.created_at desc")
-
   end
 
   def new 
@@ -23,14 +22,10 @@ class ListsController < ApplicationController
   	end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-
   def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to root_url
   end
 
   def todolist_search

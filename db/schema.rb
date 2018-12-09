@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_193006) do
     t.integer "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["list_id", "title"], name: "index_tasks_on_list_id_and_title", unique: true
     t.index ["list_id"], name: "index_tasks_on_list_id"
   end
 
