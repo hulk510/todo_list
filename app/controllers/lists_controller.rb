@@ -1,7 +1,8 @@
 class ListsController < ApplicationController
   def index
   	@list = List.new 
-  	@lists = List.all
+  	@lists = List.includes(:tasks).order("tasks.created_at desc")
+
   end
 
   def new 

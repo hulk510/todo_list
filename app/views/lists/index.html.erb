@@ -13,9 +13,13 @@
 				<p>
 					<%= list.tasks.count %>個中<%= list.tasks.finished.count %>個がチェック済み
 				</p>
+				<% if list.tasks.unfinished.near_deadline.first.nil? %>
+					<p>期限はありません</p>
+				<% else %>
 					<p>
 						~<%= list.tasks.unfinished.near_deadline.first.deadline.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
 					</p>
+				<% end %>
 			<% end %>
 		</li>
 	<% end %>

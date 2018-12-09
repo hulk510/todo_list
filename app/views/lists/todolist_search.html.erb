@@ -3,9 +3,14 @@
 <input type="submit" name="button1" value="検索" id="search" class="form-control" >
 
 <ul id="result" class="list">
+
+
 </ul>
 
 <script>
+
+
+
 $(document).on('turbolinks:load', function(){
   $(document).on('click', '#search', function(e){ 
     e.preventDefault(); 
@@ -18,20 +23,23 @@ $(document).on('turbolinks:load', function(){
 	  })
     .done(function(data){ 
       $('#result').find('li').remove();
+      console.log(data)
       var list = data[0]
       var task = data[1]
+
       if((list.length === 0) && (task.length === 0)){
 				$('#result').append('<li class="search_info">' + '対象のToDoは見つかりません' + '</li>')
 				$('#result').append('<li class="search_info">' + '対象のToDoリストは見つかりません' + '</li>')
 			} else if((list.length > 0) || (task.length > 0)) {
 				$('#result').append('<li class="search_info">' + 'ToDoが' + task.length + '件ありました' + '</li>')
+
 				for(var i=0; i < task.length; i++){
 					$('#result').append(
 						'<li class="tasks">'
-						+ '<a href="#">' + task[i].title + '</a>'
-						+ '<p>' + task[i].deadline + '</p>' 
-					  + '<p>' + task[i].id + '</p>'
-					  + '<p class="create_time">' + task[i].created_at +'</p>'
+						+ '<a href="../lists/' + task[i].list_id + '">' + task[i].title + '</a>'
+						+ '<p>' + '期限：　' + createTime(task[i].deadline) + '</p>' 
+					  + '<p class="create_time">' + '作成日：' + createTime(task[i].created_at) +'</p>'
+					  + '<p>' + 'リスト：' + task[i].list_id + '</p>'
 						+ '</li>'
 					)
 	      }
@@ -40,8 +48,8 @@ $(document).on('turbolinks:load', function(){
 	      for(var j=0; j < list.length; j++){
 					$('#result').append(
 						'<li class="lists">'
-						+ '<a href="#">' + list[j].title +'</a>'
-						+	'<p class="create_time">' + list[j].created_at +'</p>'
+						+ '<a href="../lists/' + list[j].id + '">' +  list[j].title +'</a>'
+						+	'<p class="create_time">' + '作成日：' + createTime(list[j].created_at) +'</p>'
 						+ '</li>'	
 					)
 	      }
@@ -49,4 +57,12 @@ $(document).on('turbolinks:load', function(){
     })
   });
 });
+
+function createTime(e) {
+	var t = new Date(e)
+	var year = t.getFullYear()
+	var month = t.getMonth() + 1
+	var day = t.getDate()
+	return year + '年' + month + '月' + day + '日'
+}
 </script>

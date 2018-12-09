@@ -4,3 +4,42 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+/* css checkbox01 */
+.done_checkbox{
+  display: none;
+}
+.checkbox {
+	display: block;
+	margin: 25px auto 10px 800px;
+}
+.cb {
+  border-radius: 5px;
+	background-color: #FFFFFF;
+	user-select: none;
+}
+
+.change_text {
+	color: red;
+	display: inline-block;
+	padding: 20px 43px;
+}
+
+.new_text {
+	display: none;
+}
+
+.done_checkbox:checked + .change_text{
+	display: none;
+}
+
+.done_checkbox:checked ~ .new_text {
+  display: inline-block;
+  color: #009a9a;
+  padding: 20px 50px;
+}
+
+.details {
+	float: left;
+	line-height: 27px;
+}
