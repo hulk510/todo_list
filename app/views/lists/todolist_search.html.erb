@@ -1,6 +1,9 @@
+<div class="search_form">
+	<p>検索したいものを入力してください</p>
+	<input type="text" id="search_field" class="form-control" >
+	<input type="submit" name="button1" value="検索" id="search" class="btn btn-primary" >
+</div>
 
-<input type="text" id="search_field" class="form-control" >
-<input type="submit" name="button1" value="検索" id="search" class="form-control" >
 
 <ul id="result" class="list">
 
@@ -34,7 +37,7 @@ $(document).on('turbolinks:load', function(){
 				$('#result').append('<li class="search_info">' + '対象のToDoは見つかりません' + '</li>')
 				$('#result').append('<li class="search_info">' + '対象のToDoリストは見つかりません' + '</li>')
 			} else if((list.length > 0) || (task.length > 0)) {
-				$('#result').append('<li class="search_info">' + 'ToDoが' + task.length + '件ありました' + '</li>')
+				$('#result').append('<li class="search_info">' + 'ToDoは' + task.length + '件です' + '</li>')
 
 				for(var i=0; i < task.length; i++){
 					$('#result').append(
@@ -46,7 +49,7 @@ $(document).on('turbolinks:load', function(){
 					)
 	      }
 
-				$('#result').append('<li class="search_info">' + 'ToDoリストが' + list.length + '件ありました' + '</li>')
+				$('#result').append('<li class="search_info">' + 'ToDoリストは' + list.length + '件です' + '</li>')
 	      for(var j=0; j < list.length; j++){
 					$('#result').append(
 						'<li class="lists">'

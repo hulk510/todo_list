@@ -79,9 +79,6 @@ header {
   }
 }
 
-.alert-danger {
-}
-
 #error_explanation {
   color: red;
   ul {
@@ -104,4 +101,17 @@ header {
 
 .search_info {
   color: red;
+}
+
+.search_form {
+  margin-top: 25px;
+}
+
+#search_field {
+  float: left;
+  display: inline-block;
+  width: 70%;
+}
+#search {
+  width: 30%;
 }

@@ -4,8 +4,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#new_task_form {
+	margin-bottom: 30px;
+	margin-top: 25px;
+	padding: 50px 30px;
+	border: 1px solid #C4CBD0;
+	padding-left: 10%;
+}
 
-/* css checkbox01 */
 .done_checkbox{
   display: none;
 }

@@ -4,5 +4,5 @@ class Task < ApplicationRecord
   validates :list_id, presence: true
   scope :finished, -> { where(done: true) }
   scope :unfinished, -> { where(done: false) }
-  scope :near_deadline, -> { where.not("deadline >= ?", Date.today())}
+  scope :near_deadline, -> { reorder("deadline < '#{Date.today}'") }
 end

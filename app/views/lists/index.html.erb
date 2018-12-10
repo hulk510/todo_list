@@ -17,11 +17,11 @@
 					<p>期限はありません</p>
 				<% else %>
 					<p>
-						~<%= list.tasks.unfinished.near_deadline.first.deadline.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
+						~<%= list.tasks.unfinished.near_deadline.last.deadline.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
 					</p>
-					<%= link_to "削除", list_path(list.id), method: :delete, data: { confirm: "削除しますか？" } %>
 				<% end %>
 			<% end %>
+			<%= link_to "削除", list_path(list.id), method: :delete, data: { confirm: "削除しますか？" } %>
 		</li>
 	<% end %>
 </ol>
